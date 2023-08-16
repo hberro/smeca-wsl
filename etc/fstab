@@ -1,0 +1,3 @@
+# Definition of a 2GB /tmp folder in tmpfs
+tmpfs   /tmp    tmpfs   defaults,size=2G   0 0
+

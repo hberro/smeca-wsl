@@ -1,0 +1,24 @@
+#!/bin/bash
+USERNAME="smeca-user"
+DEFAULT_HOME_DIR="/mnt/c/smeca/data"
+
+
+# Check if the user already exists
+if id "$USERNAME" &>/dev/null; then
+    echo "User $USERNAME exists."
+else
+    # Create the user
+    useradd -l -g smeca -G sudo -md $DEFAULT_HOME_DIR -p "SLyoRWxSUlSk2" -s /bin/bash $USERNAME
+    rm -rf /root/.bash_history /root/.nano
+fi
+
+if [ ! -e $DEFAULT_HOME_DIR ]; then
+   mkdir -p $DEFAULT_HOME_DIR/../
+   cp -r /etc/skel $DEFAULT_HOME_DIR
+   chown -R $USERNAME:smeca $DEFAULT_HOME_DIR
+fi
+
+if [ ! -e /home/$USERNAME ]; then
+    mkdir -p /home && cd /home && ln -s $DEFAULT_HOME_DIR $USERNAME
+fi
+

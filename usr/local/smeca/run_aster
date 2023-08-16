@@ -1,0 +1,11 @@
+#!/bin/bash
+set_prefix() {
+    local this=$(readlink -n -f "$1")
+    prefix=$(dirname "${this}")
+}
+set_prefix "${0}"
+
+run_aster_location=$(find /opt/salome_meca -type f -name run_aster -print | head -n 1 2>/dev/null)
+
+# Start a SALOME context
+/opt/salome_meca/salome_meca shell $run_aster_location $@

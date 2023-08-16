@@ -1,0 +1,10 @@
+#!/bin/bash
+set_prefix() {
+    local this=$(readlink -n -f "$1")
+    prefix=$(dirname "${this}")
+}
+set_prefix "${0}"
+
+astk_location=$(find /opt/salome_meca -type f -name astk -print | head -n 1 2>/dev/null)
+
+$astk_location $@

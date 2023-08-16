@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Shortcut to kill all SALOME sessions
+# Note that this is dangerous !
+
+echo "This script will attempt to kill processes related to Salome."
+read -n 1 -p "Do you want to proceed? (y/N): " choice
+
+
+if [ "$choice" == "y" ]; then
+    echo -e "\nKilling processes..."
+    killall -I -r salome
+else
+    echo -e "\nOperation canceled."
+fi

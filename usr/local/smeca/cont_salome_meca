@@ -1,0 +1,14 @@
+#!/bin/bash
+set_prefix() {
+    local this=$(readlink -n -f "$1")
+    prefix=$(dirname "${this}")
+}
+set_prefix "${0}"
+
+. $prefix/.env_cont_sm
+
+if [ -f $_SM_SIF ]; then
+    # Actually run the container with the provided options...
+    _SINGULARITY_ARGS="$_SINGULARITY_ARGS -B /opt/salome_meca/salome_meca"
+    singularity run --nv $_SINGULARITY_ARGS $_SM_SIF $@
+fi

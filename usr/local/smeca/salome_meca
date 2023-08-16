@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "==============================================================================="
+echo -e "   \033[1;36m __         _                                                    \033[0m"
+echo -e "   \033[1;36m/ _\\  __ _ | |  ___   _ __ ___    ___    /\\/\\    ___   ___  __ _ \033[0m"
+echo -e "   \033[1;36m\\ \\  / _\` || | / _ \\ | '_ \` _ \\  / _ \\  /    \\  / _ \\ / __|/ _\` |\033[0m"
+echo -e "   \033[1;36m_\\ \\| (_| || || (_) || | | | | ||  __/ / /\\/\\ \\|  __/| (__| (_| |\033[0m"
+echo -e "   \033[1;36m\\__/ \\__,_||_| \\___/ |_| |_| |_| \\___| \\/    \\/ \\___| \\___|\\__,_|\033[0m"
+echo -e "                               EDF R&D / ERMES           V2022.1.0-1      "
+echo "==============================================================================="
+
+if glxinfo -B &> /dev/null; then
+    vendor=$(glxinfo -B |grep Vendor)
+    echo $text $vendor
+
+    echo "[ INFO    ] Graphics are properly configured..."
+    echo "[         ]     Display${DISPLAY}"
+    echo "[         ]  ${vendor}"
+else
+    echo -e "\033[1;31m[ ERROR   ]\033[0m Display/Graphics problem, please reinstall or update WSL2..."
+    echo -e "\033[1;36m[ SUGGEST ]\033[0m Read more about how to troubleshoot here :"
+    echo "            https://code-aster.org/forum2/viewtopic.php?id=27156"
+    exit 1
+fi
+echo "-------------------------------------------------------------------------------"
+
+# Actual launching of Salome Meca
+/opt/salome_meca/salome_meca $@
+

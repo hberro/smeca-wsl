@@ -1,0 +1,16 @@
+#!/bin/bash
+set_prefix() {
+    local this=$(readlink -n -f "$1")
+    prefix=$(dirname "${this}")
+}
+set_prefix "${0}"
+
+. $prefix/.env_cont_sm
+
+if [ -f $_SM_SIF ]; then
+    # Lookup the location of the run_aster script
+    run_aster_script=$(singularity exec $_SM_SIF find '/opt/salome_meca/' -name run_aster -print | head -n 1 2>/dev/null)
+
+    # Actually run the container with the provided options...
+    singularity run $_SINGULARITY_ARGS $_SM_SIF shell -- $run_aster_script $@
+fi

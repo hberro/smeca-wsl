@@ -1,0 +1,10 @@
+[Unit]
+Description=Create default smeca-user
+After=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/create_default_user
+
+[Install]
+WantedBy=multi-user.target

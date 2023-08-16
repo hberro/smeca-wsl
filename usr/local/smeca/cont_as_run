@@ -1,0 +1,8 @@
+#!/bin/bash
+set_prefix() {
+    local this=$(readlink -n -f "$1")
+    prefix=$(dirname "${this}")
+}
+set_prefix "${0}"
+
+$prefix/cont_salome_meca shell -- as_run $@

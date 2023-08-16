@@ -1,0 +1,55 @@
+#!/bin/bash
+
+DEF_UNAME="smeca-user"
+DEF_HOME_DIR="C:/smeca/data"
+
+echo "First of all, we would like to thank you for downloading this Salome Meca 2022 WSL distribution."
+
+echo ""
+echo "Here are your default login credentials:"
+echo "  |-------------------------|"
+echo "  | username : $DEF_UNAME   |"
+echo "  | password : codeaster    |"
+echo "  |-------------------------|"
+echo ""
+
+echo "We suggest that you change the default password as soon as possible for security reasons."
+
+echo ""
+echo "Please note that this distribution is shipped with a working (official) installation of"
+echo "Salome Meca 2022.1.0-1 LGPL release. The following shortcuts are ready to be used to"
+echo "leverage the different tools included with Salome Meca:"
+echo ""
+
+echo "  |-----------------------------------------------------------------------------------------|"
+echo "  | salome_meca    : runs the main GUI if no arguments are provided, can be used to run a   |"
+echo "  |                  salome shell or start a session in the background (text mode : -t)     |"
+echo "  | run_aster      : runs the entry point to the new pythonic code_aster library and can    |"
+echo "  |                  be used as an alternative to the legacy as_run to execute export files |"
+echo "  |-----------------------------------------------------------------------------------------|"
+echo "  | astk           : runs the legacy (older) interface to code_aster                        |"
+echo "  | as_run         : runs the legacy (older) command line interface to code_aster           |"
+echo "  |-----------------------------------------------------------------------------------------|"
+echo ""
+
+echo "Please note as well that the home directory to the $DEF_UNAME is automatically prepared to"
+echo "point to $DEF_HOME_DIR. The reasons for this are diverse but include : data security/access"
+echo "in the event of a WSL system crash causing a corrupted virtual disk in addition to reducing"
+echo "the nefast effects of (dynamic) disk expansion in WSL."
+echo ""
+
+echo "The directory /home/smeca-user is set to point to $DEF_HOME_DIR. The consequences of our"
+echo "configuration are thus invisible from the linux side."
+echo ""
+
+echo "Finally, please note that this distribution is also shipped with a working singularity-ce"
+echo "installation (v3.11) and this allows to run other Salome Meca versions as SIF files. The"
+echo "details on how this can be done are provided in /home/smeca-user/containers/README"
+echo ""
+
+echo "Note that this message is shown only on the first login, but can be recalled using the"
+echo "command :   welcome"
+echo ""
+
+echo "Salome Meca / code_aster development team from EDF R&D Saclay (August 2023)"
+

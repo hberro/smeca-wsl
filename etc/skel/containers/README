@@ -1,0 +1,32 @@
+This folder is the entry point to other versions of salome_meca
+(than v2022 which is included in this WSL distribution).
+
+For example, if you would like to execute the 2020 version of
+salome_meca (knowing that this WSL comes with v2022), this is
+possible by copying the salome-meca-2020 sif file into this 
+folder (/containers).
+
+cp /path/to/salome-meca-xxx.sif /containers
+
+Alternatively, it is possible to just create a symbolic link
+here to the SIF file.
+
+cd /containers && ln -s /path/to/salome-meca-xxx.sif
+
+Once the SIF file is available in this folder, you can use
+the following shortcuts within the container :
+
+cont_salome_meca
+cont_astk
+cont_as_run
+cont_run_aster
+
+Note that a little overhead in terms of performance can be
+encountered when using this method, compared to the use of the
+version that is pre-installed natively in this WSL distribution.
+
+This overhead is due to the performance of singularity containers
+(and containers in general) in WSL.
+
+Copyright EDF R&D 2023
+Hassan BERRO
